@@ -1,4 +1,5 @@
 addpath ../common
+addpath ../common/common
 addpath ../common/minFunc_2012/minFunc
 addpath ../common/minFunc_2012/minFunc/compiled
 
@@ -20,7 +21,7 @@ m=size(train.X,2);
 n=size(train.X,1);
 
 % Train logistic regression classifier using minFunc
-options = struct('MaxIter', 100);
+options = struct('MaxIter', 200,'useMex',0);
 
 % First, we initialize theta to some small random values.
 theta = rand(n,1)*0.001;
@@ -40,10 +41,10 @@ fprintf('Optimization took %f seconds.\n', toc);
 % time for your logistic_regression.m and logistic_regression_vec.m implementations.
 %
 % Uncomment the lines below to run your vectorized code.
-%theta = rand(n,1)*0.001;
-%tic;
-%theta=minFunc(@logistic_regression_vec, theta, options, train.X, train.y);
-%fprintf('Optimization took %f seconds.\n', toc);
+theta = rand(n,1)*0.001;
+tic;
+theta=minFunc(@logistic_regression_vec, theta, options, train.X, train.y);
+fprintf('Optimization took %f seconds.\n', toc);
 
 % Print out training accuracy.
 tic;
