@@ -1,4 +1,5 @@
 addpath ../common
+addpath ../common/common
 addpath ../common/minFunc_2012/minFunc
 addpath ../common/minFunc_2012/minFunc/compiled
 
@@ -23,8 +24,8 @@ m=size(train.X,2);
 n=size(train.X,1);
 
 % Train softmax classifier using minFunc
-options = struct('MaxIter', 200);
-
+%options = struct('MaxIter', 200);
+options = struct('MaxIter', 200,'useMex',0);
 % Initialize theta.  We use a matrix where each column corresponds to a class,
 % and each row is a classifier coefficient for that class.
 % Inside minFunc, theta will be stretched out into a long vector (theta(:)).
